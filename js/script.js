@@ -11,6 +11,13 @@ function agregar(){
 	var textoNuevaTarea = document.createTextNode(tareas);
 	var elementoContenedor = document.createElement("span");
 
+	//Valida que textarea no esté vacia al presionar boton aceptar
+	//ubica el siguiente codigo dentro de la funcion de manera que no se permita agregar una tarea vacia
+	if(tareas == null || tareas.length == 0){
+		alert("¡Error! Debe ingresar tarea");
+		return false;
+	}
+
 	//Asignamos padres a nodos creados
 	elementoContenedor.appendChild(textoNuevaTarea);
 	nuevasTareas.appendChild(elementoContenedor);
@@ -46,13 +53,6 @@ function agregar(){
 		cora.classList.toggle("red");
 	});
 
-	//Valida que textarea no esté vacia al presionar boton aceptar
-	//ubica el siguiente codigo dentro de la funcion de manera que no se permita agregar una tarea vacia
-	if(tareas == null || tareas.length == 0){
-		alert("¡Error! Debe ingresar tarea");
-		return false;
-	}
-
 	//Además, si deseas eliminar la llamada onclick="agregar()" del elemento #boton,
 	//puedes agregar este codigo al inicio del documento.
 	window.onload = function(){
@@ -62,10 +62,11 @@ function agregar(){
 	//Y en el HTML eliminar el atributo onclick
 }
 
-agregar();
-
-
-
+//Además, si deseas eliminar la llamada onclick="agregar()" del elemento #boton,
+	//puedes agregar este codigo al inicio del documento.
+	window.onload = function(){
+		document.getElementById("boton").addEventListener("click", agregar);
+	}
 
 
 
